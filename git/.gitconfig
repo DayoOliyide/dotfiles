@@ -1,0 +1,9 @@
+[user]
+    #email = <SET-ME-THEN-UNCOMMENT>
+    #name = <SET-ME-THEN-UNCOMMENT>
+[color]
+	ui = true
+[core]
+    #excludesfile = <SET-ME-THEN-UNCOMMENT>/.gitignore_global
+[alias]
+    lg = log --graph --pretty=format:'%C(auto)%h -%d %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit
