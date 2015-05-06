@@ -16,7 +16,8 @@
      ;; Example of useful layers you may want to use right away
      ;; Uncomment a layer name and press C-c C-c to install it
      ;; --------------------------------------------------------
-     ;; auto-completion
+     auto-completion
+     ;;company-mode
      ;; better-defaults
      ;; (git :variables
      ;;      git-gutter-use-fringe t)
@@ -24,6 +25,7 @@
      ;; org
      ;; syntax-checking
      clojure
+     themes-megapack
      )
    ;; A list of packages and/or extensions that will not be install and loaded.
    dotspacemacs-excluded-packages '()
@@ -59,12 +61,11 @@ before layers configuration."
    ;; List of themes, the first of the list is loaded when spacemacs starts.
    ;; Press <SPC> T n to cycle to the next theme in the list (works great
    ;; with 2 themes variants, one dark and one light)
-   dotspacemacs-themes '(solarized-dark
-                         wheatgrass
-                         solarized-light
-                         leuven
-                         monokai
-                         zenburn)
+   dotspacemacs-themes '(cyberpunk
+                         afternoon
+                         dakrone
+                         solarized-dark
+                         wheatgrass)
    ;; If non nil the cursor color matches the state color.
    dotspacemacs-colorize-cursor-according-to-state t
    ;; Default font. `powerline-scale' allows to quickly tweak the mode-line
@@ -141,6 +142,8 @@ before layers configuration."
  This function is called at the very end of Spacemacs initialization after
 layers configuration."
   (setq powerline-default-separator 'arrow)
+  (add-hook 'cider-repl-mode-hook #'company-mode)
+  (add-hook 'cider-mode-hook #'company-mode)
 )
 
 ;; Do not write anything past this comment. This is where Emacs will
