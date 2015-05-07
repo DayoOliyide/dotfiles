@@ -19,12 +19,14 @@
      auto-completion
      ;;company-mode
      ;; better-defaults
-     ;; (git :variables
-     ;;      git-gutter-use-fringe t)
-     ;; markdown
      ;; org
-     ;; syntax-checking
      clojure
+     syntax-checking
+     (git :variables
+          git-gutter-use-fringe t
+          git-magit-status-fullscreen t
+          git-enable-github-support t)
+     markdown
      themes-megapack
      )
    ;; A list of packages and/or extensions that will not be install and loaded.
