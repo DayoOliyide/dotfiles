@@ -33,5 +33,7 @@
                           clojure.core >
                           [clojure.java.shell sh]
                           [com.gfredericks.debug-repl break! unbreak! unbreak!!]
-                          [debugger.core break break-catch])]}}
+                          [debugger.core break break-catch])
+               ;;Personal repl tools :)
+               (defn >shell [args] (-> (apply >sh (.split args " ")) :out (.split "\n") ./pprint))]}}
 
