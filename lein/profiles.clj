@@ -10,7 +10,8 @@
                  [com.gfredericks/debug-repl "0.0.6"]
                  [debugger "0.1.7"]
                  [difform "1.1.2"]
-                 [clj-ns-browser "1.3.1"]]
+                 [clj-ns-browser "1.3.1"]
+                 ]
 
   :repl-options {:nrepl-middleware
                  [com.gfredericks.debug-repl/wrap-debug-repl]}
@@ -27,8 +28,10 @@
                           [clojure.pprint pprint pp]
                           [vinyasa.inject :refer [inject [in inject-in]]]
                           [vinyasa.pull :all]
+                          ;;[vinyasa.reimport reimport reimport-from-file]
                           [com.georgejahad.difform difform]
                           [clj-ns-browser.sdoc sdoc]
+                          [cemerick.pomegranate add-classpath get-classpath resources]
 
                           clojure.core >
                           [clojure.java.shell sh]
