@@ -16,6 +16,7 @@
      ;; Example of useful layers you may want to use right away
      ;; Uncomment a layer name and press C-c C-c to install it
      ;; --------------------------------------------------------
+     emacs-lisp
      auto-completion
      ;;company-mode
      ;; better-defaults
@@ -136,6 +137,7 @@ before layers configuration."
    dotspacemacs-default-package-repository nil
 
    evil-escape-key-sequence "jk"
+   dotspacemacs-use-ido t
    )
   ;; User initialization goes here
   )
