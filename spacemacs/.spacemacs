@@ -23,14 +23,18 @@
      ;; org
      clojure
      syntax-checking
-     (git :variables
-          git-gutter-use-fringe t
-          git-magit-status-fullscreen t
-          git-enable-github-support t)
+;     (git :variables
+;          git-gutter-use-fringe t
+;          git-magit-status-fullscreen t
+;          git-enable-github-support t)
+;;;     git
+;;;     github
+;;;     version-control
      markdown
      themes-megapack
      org
      restclient
+     prodigy
      )
    ;; A list of packages and/or extensions that will not be install and loaded.
    dotspacemacs-excluded-packages '()
@@ -75,8 +79,8 @@ before layers configuration."
    dotspacemacs-colorize-cursor-according-to-state t
    ;; Default font. `powerline-scale' allows to quickly tweak the mode-line
    ;; size to make separators look not too crappy.
-   dotspacemacs-default-font '("Monaco for Powerline"
-                               :size 19
+   dotspacemacs-default-font '("Monaco"
+                               :size 33 
                                :weight normal
                                :width normal
                                :powerline-scale 1.1)
@@ -139,6 +143,7 @@ before layers configuration."
 
    evil-escape-key-sequence "jk"
    dotspacemacs-use-ido t
+   git-magit-status-fullscreen t
    )
   ;; User initialization goes here
   )
@@ -150,6 +155,45 @@ layers configuration."
   (setq powerline-default-separator 'arrow)
   (add-hook 'cider-repl-mode-hook #'company-mode)
   (add-hook 'cider-mode-hook #'company-mode)
+
+  ;;Prodigy Services
+
+  ;; reset status
+  (setq prodigy-services '())
+
+  ;; Ingestion API
+  (setq prodigy-services
+        (prodigy-define-service
+          :name "Samsara / Ingestion-APIs / console"
+          :cwd "~/Projects/samsara/samsara-ingestion-api"
+          :command "lein"
+          :args '("run" "--" "-c" "./config/config.edn")
+          :tags '(samsara)
+          :port 9000
+          :stop-signal 'term
+          :kill-process-buffer-on-stop nil))
+
+  (setq prodigy-services
+        (prodigy-define-service
+          :name "Samsara / Ingestion-APIs / kafka"
+          :cwd "~/Projects/samsara/samsara-ingestion-api"
+          :command "lein"
+          :args '("run" "--" "-c" "./config/config-kafka.edn")
+          :tags '(samsara sam-local)
+          :port 9000
+          :stop-signal 'term
+          :kill-process-buffer-on-stop nil))
+
+  ;; Hydrant
+  (setq prodigy-services
+        (prodigy-define-service
+          :name "Samsara / Hydrant"
+          :cwd "~/Projects/samsara/hydrant"
+          :command "lein"
+          :args '("run" "--" "-c" "./config/hydrant.config")
+          :tags '(samsara)
+          :stop-signal 'term
+          :kill-process-buffer-on-stop nil))
 )
 
 ;; Do not write anything past this comment. This is where Emacs will
