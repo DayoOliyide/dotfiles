@@ -1,6 +1,7 @@
 {:user
  {:plugins [[lein-bin "0.3.4"]
             [lein-midje "3.1.3"]
+	    [lein-gorilla "0.3.4"]
             [cider/cider-nrepl "0.9.0-SNAPSHOT"]    ;;spacemacs cider
             [refactor-nrepl "1.1.0-SNAPSHOT"]]      ;;spacemacs cider
   :dependencies [[alembic "0.3.2"]                  ;;spacemacs cider
